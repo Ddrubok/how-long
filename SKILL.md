@@ -8,32 +8,26 @@ description: >-
 
 # How Long Will It Take?
 
-## Before the report
-
-After reading required instructions, report immediately without extra tool lookups if the supplied context is sufficient.
-
-Only when an unknown could materially change the estimate, make at most two small, independent read-only checks in one parallel batch. If parallel calls are unavailable, make at most one check. This limit applies only to extra investigation for estimating, not required instruction reads or the work after the report. If tools are unavailable, use the supplied context.
-
-Before reporting, do not edit files, run builds or tests, install anything, or begin substantive research. Express remaining important uncertainty as a short assumption or range.
-
 ## Estimate
 
-- Estimate elapsed time from the report until final delivery, including required verification, saving, and ordinary tool waits. Identify unpredictable user-response, approval, and external waits separately. For open-ended scope, estimate only the bounded part and label any excluded waits.
-- Use the most likely execution path, accounting for model reasoning and generation, sequential tool calls, command waits, and necessary verification and rework. Do not require three scenarios for every task.
-- Reuse existing runtimes only for similar commands and environment conditions. Distinguish cached runs from initial runs; a timeout is not an expected runtime.
-- Add sequential work. For actual parallel work, use the longest dependency path and include coordination and result integration. Do not assume unavailable concurrency.
-- Do not copy human development times or cap all AI tasks at a few seconds or minutes. Do not invent fixed time per file, throughput, retry probabilities, or a blanket padding percentage.
+After required instructions, report immediately if context suffices. Only for a material unknown, allow at most two small, independent read-only checks in one parallel batch, or one check without parallel calls. This cap covers extra estimation research only. No pre-report edits, builds, tests, installs, or substantive research; skip lookups that merely refine precision.
 
-## Report and proceed
+Estimate elapsed time from report to final delivery, including reasoning, generation, sequential tool calls and waits, required verification, saving, and necessary rework. Use the likely execution path; no mandatory scenarios. For actual parallel work, use the longest dependency path plus coordination and integration.
 
-Report once in the user's language: one content line by default, at most two when needed. Lead with one appropriately rounded, most likely estimate. Add a range and its main cause only for important uncertainty; the estimate must lie within the range. Provide a phase-by-phase breakdown only when requested.
+Reuse observed runtimes only for similar commands and conditions: distinguish cached and initial runs; timeouts are not expected durations. Do not substitute human development times, impose universal AI time limits, or invent time per file, throughput, retry probabilities, or padding percentages.
 
-A range describes plausible outcomes, not a statistical confidence interval or guaranteed maximum. Base any range adjustment on changed evidence; never shrink or widen it to meet a deadline or conceal uncertainty.
+## Ground the report
 
-Respect the user's explicit output format. Use a `### 🟦` heading only when Markdown headings are supported and allowed; otherwise use plain text. For example: `Estimated duration: about [time]`, replacing the placeholder and translating as needed.
+Separate observations from predictions. Claims about measurements, history, logs, checks, or completion require evidence; distinguish supplied reports from direct observation.
 
-After the report, proceed with already-authorized work while preserving existing approval conditions. If only an estimate was requested, stop after reporting.
+Without comparable timing evidence, label the result a rough, task-based estimate. Missing history alone does not prevent estimating clear, bounded work. If no defensible estimate or range is possible, state that and one missing condition instead of inventing a number. Identify unpredictable user, approval, or external waits separately; estimate only bounded portions and label exclusions.
 
-## Scope
+## Report once
 
-Add no timers, saved timing history, countdowns, periodic ETA updates, or measured completion-time reports. Leave normal task communication to the host's instructions. Keep execution instructions free of product-specific commands and installation paths.
+Use the user's language and requested format: one content line, at most two if needed. Lead with a rounded estimate when defensible. Add a range and main uncertainty only when material; the estimate must lie within the range. Breakdowns only on request.
+
+Ranges describe plausible outcomes, not statistical confidence intervals or guaranteed maxima. Adjust only with changed evidence, never to fit deadlines or hide uncertainty. Use `### 🟦` only when Markdown headings are supported and allowed; otherwise plain text.
+
+Proceed with authorized work, preserving approval conditions. Stop after reporting if only an estimate was requested. Never omit required verification or claim completion to meet the forecast.
+
+No timers, saved timing history, countdowns, periodic ETA updates, or measured completion-time reports. Normal task communication remains unchanged.
